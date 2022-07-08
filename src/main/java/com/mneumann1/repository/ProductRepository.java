@@ -16,9 +16,12 @@ public class ProductRepository {
 	
 		
 	public ProductRepository() {
-		products.add(new ProductResponse(UUID.randomUUID().toString(), "AMD Ryzen 5950X", "A very super processor!", 59900, Arrays.asList("AMD", "processor")));
-		products.add(new ProductResponse(UUID.randomUUID().toString(), "Intel XEON v3123", "A processor mainly for servers!", 37900, Arrays.asList("Intel", "processor")));
-		products.add(new ProductResponse(UUID.randomUUID().toString(), "NVIDIA GeForce GTX 1080 Ti Black Edition 11GB", "A very goog gaming graphics card!", 74900, Arrays.asList("Intel", "graphics")));
+//		products.add(new ProductResponse(UUID.randomUUID().toString(), "AMD Ryzen 5950X", "A very super processor!", 59900, Arrays.asList("AMD", "processor")));
+//		products.add(new ProductResponse(UUID.randomUUID().toString(), "Intel XEON v3123", "A processor mainly for servers!", 37900, Arrays.asList("Intel", "processor")));
+//		products.add(new ProductResponse(UUID.randomUUID().toString(), "NVIDIA GeForce GTX 1080 Ti Black Edition 11GB", "A very goog gaming graphics card!", 74900, Arrays.asList("Intel", "graphics")));
+		products.add(new ProductResponse("1", "AMD Ryzen 5950X", "A very super processor!", 59900, Arrays.asList("AMD", "processor")));
+		products.add(new ProductResponse("2", "Intel XEON v3123", "A processor mainly for servers!", 37900, Arrays.asList("Intel", "processor")));
+		products.add(new ProductResponse("3", "NVIDIA GeForce GTX 1080 Ti Black Edition 11GB", "A very goog gaming graphics card!", 74900, Arrays.asList("Intel", "graphics")));
 	}
 
 	
