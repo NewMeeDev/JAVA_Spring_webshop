@@ -9,10 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import com.mneumann1.model.CustomerResponse;
 import com.mneumann1.repository.CustomerRepository;
 
+
 @RestController
 public class CustomerController {
 	
-	private CustomerRepository customerRepository = new CustomerRepository();
+	// Dependency Injection
+	private CustomerRepository customerRepository;
+	
+	// Constructor with Dependency Injection
+	
+	public CustomerController(CustomerRepository customerRepository) {
+		this.customerRepository = customerRepository;
+	}
 	
 	
 	@GetMapping("/customers")

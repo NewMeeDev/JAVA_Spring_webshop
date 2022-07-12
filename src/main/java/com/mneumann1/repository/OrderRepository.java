@@ -7,11 +7,14 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.mneumann1.model.OrderCreateRequest;
 import com.mneumann1.model.OrderPosition;
 import com.mneumann1.model.OrderResponse;
 import com.mneumann1.model.OrderStatus;
 
+@Service
 public class OrderRepository {
 	
 	private List<OrderResponse> orders = new ArrayList<>();

@@ -6,20 +6,22 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.mneumann1.model.CustomerResponse;
 
+@Service
 public class CustomerRepository {
 
 	private List<CustomerResponse> customers = new ArrayList<>();
 	
-	
 	public CustomerRepository() {
-//		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Max", "Lange", "max.lange@web.de"));
-//		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Karl", "Richter", "karl-richter@mail.org"));
-//		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Friedrich", "Schiller", "fs123@gmail.com"));
-		customers.add(new CustomerResponse("1", "Max", "Lange", "max.lange@web.de"));
-		customers.add(new CustomerResponse("2", "Karl", "Richter", "karl-richter@mail.org"));
-		customers.add(new CustomerResponse("3", "Friedrich", "Schiller", "fs123@gmail.com"));
+		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Max", "Lange", "max.lange@web.de"));
+		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Karl", "Richter", "karl-richter@mail.org"));
+		customers.add(new CustomerResponse(UUID.randomUUID().toString(), "Friedrich", "Schiller", "fs123@gmail.com"));
+//		customers.add(new CustomerResponse("1", "Max", "Lange", "max.lange@web.de"));
+//		customers.add(new CustomerResponse("2", "Karl", "Richter", "karl-richter@mail.org"));
+//		customers.add(new CustomerResponse("3", "Friedrich", "Schiller", "fs123@gmail.com"));
 		}
 	
 	

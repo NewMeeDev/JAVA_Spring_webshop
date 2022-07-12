@@ -13,8 +13,13 @@ import com.mneumann1.repository.ProductRepository;
 @RestController
 public class ProductController {
 	
-	private ProductRepository productRepository = new ProductRepository();
-
+	private ProductRepository productRepository;
+	
+	// Constructor with Dependency Injection
+	public ProductController(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+	
 	
 	@GetMapping("/products")
 	public List<ProductResponse> getAllProducts(@RequestParam(required = false) String tag) {
