@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.mneumann1.model.ProductResponse;
-import com.mneumann1.model.ProductCreateRequest;
 import com.mneumann1.repository.ProductRepository;
+import com.mneumann1.model.ProductCreateRequest;
 
 @RestController
 public class ProductController {

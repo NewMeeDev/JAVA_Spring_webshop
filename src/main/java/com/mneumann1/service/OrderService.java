@@ -3,8 +3,11 @@ package com.mneumann1.service;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.mneumann1.exceptions.IdNotFoundException;
+import com.mneumann1.exceptions.WebshopException;
 import com.mneumann1.model.CustomerResponse;
 import com.mneumann1.model.OrderCreateRequest;
 import com.mneumann1.model.OrderPositionCreateRequest;
@@ -33,7 +36,7 @@ public class OrderService {
 		this.orderPositionRepository = orderPositionRepository;
 	}
 
-	public OrderResponse createOrder(OrderCreateRequest request) {
+	public OrderResponse createOrder(OrderCreateRequest request) throws IdNotFoundException {
 
 		/*
 		 * for(CustomerResponse cr : customerRepository.customers) {
@@ -43,25 +46,25 @@ public class OrderService {
 		Optional<CustomerResponse> customer = customerRepository.findById(request.getCustomerId());
 
 		if (customer.isEmpty()) {
-			throw new NullPointerException("Customer not found!");
+			throw new IdNotFoundException(String.format("Customer with id %s not found!", request.getCustomerId()), HttpStatus.BAD_REQUEST);
 		} else {
 			System.out.println("Customer found: " + customer.map(c -> c.getFirstName() + " " + c.getLastName()));
 			return orderRepository.save(request);
 		}
 	}
 
-	public OrderPositionResponse createNewPositionForOrder(String orderId, OrderPositionCreateRequest request) {
+	public OrderPositionResponse createNewPositionForOrder(String orderId, OrderPositionCreateRequest request) throws IdNotFoundException {
 
 		Optional<OrderResponse> order = orderRepository.findById(orderId);
 
 		if (order.isEmpty()) {
-			throw new NullPointerException("Order not found!");
+			throw new IdNotFoundException(String.format("Order with id %s not found!", orderId), HttpStatus.BAD_REQUEST);
 		} else {
 
 			Optional<ProductResponse> product = productRepository.findById(request.getProductId());
 
 			if (product.isEmpty()) {
-				throw new NullPointerException("Product not found!");
+				throw new IdNotFoundException(String.format("Product with id %s not found!", request.getProductId()), HttpStatus.BAD_REQUEST);
 
 			} else {
 				System.out.println("Product found: " + product.map(p -> p.getName()));

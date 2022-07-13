@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
+import com.mneumann1.exceptions.WebshopException;
 import com.mneumann1.model.OrderCreateRequest;
 import com.mneumann1.model.OrderPositionCreateRequest;
 import com.mneumann1.model.OrderResponse;
@@ -29,15 +30,13 @@ public class OrderController {
 
 		
 	@PostMapping("/orders")
-	public OrderResponse createOrder(@RequestBody OrderCreateRequest request) {
-		return orderService.createOrder(request);	
+	public OrderResponse createOrder(@RequestBody OrderCreateRequest request) throws WebshopException {	
+		return orderService.createOrder(request);			
 	}
 	
 	@PostMapping("/orders/{id}/positions")
-	public void orderPosition(@PathVariable(name = "id") String orderId, @RequestBody OrderPositionCreateRequest request) {
-		
+	public void createOrderPosition(@PathVariable(name = "id") String orderId, @RequestBody OrderPositionCreateRequest request) throws WebshopException {
 		orderService.createNewPositionForOrder(orderId, request);
-		
 	}
 
 }
